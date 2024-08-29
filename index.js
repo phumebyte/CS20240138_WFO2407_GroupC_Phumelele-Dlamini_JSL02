@@ -30,10 +30,17 @@ const addNewGoal = () => {
             break; // exit the loop as soon as we find a match
         }    
     }
+   
+    if (isDuplicate == true){
+        alert('Goal already exists! Enter a different goal');
+    } else if(goalInput == '') {
+        alert('Enter a goal')
+    } else {
+        const newGoal = document.createElement('li');
+        newGoal.textContent = goalInput;
+        goalList.appendChild(newGoal); 
+    }
     
-    const newGoal = document.createElement('li');
-    newGoal.textContent = goalInput;
-    goalList.appendChild(newGoal);
 };
 
 // Add event listener to the goal submit button
