@@ -30,12 +30,12 @@ const addNewGoal = () => {
             break; // exit the loop as soon as we find a match
         }    
     }
-   
+   // Prevention conditional statement
     if (isDuplicate == true){
-        alert('Goal already exists! Enter a different goal');
+        alert('Goal already exists! Enter a different goal'); //prompts user to add a different goal
     } else if(goalInput == '') {
-        alert('Enter a goal')
-    } else {
+        alert('Enter a goal')  // if input is empty, user is prompted to add a goal
+    } else {        // if the boolean remains false and the input is not empty, the goal will be added
         const newGoal = document.createElement('li');
         newGoal.textContent = goalInput;
         goalList.appendChild(newGoal); 
