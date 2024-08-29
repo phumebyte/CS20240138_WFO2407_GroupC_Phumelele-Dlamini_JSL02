@@ -25,7 +25,7 @@ const addNewGoal = () => {
 
     let isDuplicate = false; // creates a default false boolean that will verify repetitions
     for (let i=0; i < goals.length; i++){   //goals.length is the length of the const variable that contains all the goals
-        if(goals[i].textContent.toLowerCase() === goalInput.toLowerCase()){
+        if(goals[i].textContent.toLowerCase() === goalInput.toLowerCase()){ // everything will be in lowercase to compare easier
             isDuplicate = true;  // changes the boolean if the text content matches
             break; // exit the loop as soon as we find a match
         }    
@@ -39,6 +39,7 @@ const addNewGoal = () => {
         const newGoal = document.createElement('li');
         newGoal.textContent = goalInput;
         goalList.appendChild(newGoal); 
+        goalInput.value = ''; // clear input after goal has been successfully added
     }
     
 };
