@@ -19,30 +19,32 @@ document.querySelector('#submitWorkout').addEventListener('click', displayWorkou
 // NOW LET'S DEBUG TO PREVENT DUPLICATE GOALS FROM BEING SUBMITTED 🚀
 
 const addNewGoal = () => {
-    const goalInput = document.querySelector('#goalInput').value;
+    const goalInputElement = document.querySelector('#goalInput'); // reference the input element
+    const goalInput = goalInputElement.value.trim(); // fetches the value and trims any whitespace
     const goalList = document.querySelector('#goalList');
-    const goals = goalList.querySelectorAll('li'); //fetches all goals and puts them in a list
+    const goals = goalList.querySelectorAll('li'); // fetches all goals and puts them in a list
 
     let isDuplicate = false; // creates a default false boolean that will verify repetitions
-    for (let i=0; i < goals.length; i++){   //goals.length is the length of the const variable that contains all the goals
-        if(goals[i].textContent.toLowerCase() === goalInput.toLowerCase()){ // everything will be in lowercase to compare easier
-            isDuplicate = true;  // changes the boolean if the text content matches
+    for (let i = 0; i < goals.length; i++) { // goals.length is the length of the const variable that contains all the goals
+        if (goals[i].textContent.toLowerCase() === goalInput.toLowerCase()) { // everything will be in lowercase to compare easier
+            isDuplicate = true; // changes the boolean if the text content matches
             break; // exit the loop as soon as we find a match
         }    
     }
-   // Prevention conditional statement
-    if (isDuplicate == true){
-        alert('Goal already exists! Enter a different goal'); //prompts user to add a different goal
-    } else if(goalInput == '') {
-        alert('Enter a goal')  // if input is empty, user is prompted to add a goal
-    } else {        // if the boolean remains false and the input is not empty, the goal will be added
+
+    // Prevention conditional statement
+    if (isDuplicate == true) {
+        alert('Goal already exists! Enter a different goal'); // prompts user to add a different goal
+    } else if (goalInput == '') {
+        alert('Enter a goal'); // if input is empty, user is prompted to add a goal
+    } else { // if the boolean remains false and the input is not empty, the goal will be added
         const newGoal = document.createElement('li');
         newGoal.textContent = goalInput;
         goalList.appendChild(newGoal); 
-        goalInput.value = ''; // clear input after goal has been successfully added
+        goalInputElement.value = ''; // clear input after goal has been successfully added
     }
-    
 };
+
 
 // Add event listener to the goal submit button
 document.querySelector('#submitGoal').addEventListener('click', addNewGoal);
